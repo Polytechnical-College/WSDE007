@@ -1,6 +1,6 @@
 package com.example.demex;
 
-public class User {
+public final class User {
     String username;
     String firstname;
     String secondname;
@@ -8,8 +8,14 @@ public class User {
     int timeDrive;
     int cash;
     int token;
+    private static User instance;
 
-    public User(String username, String firstname, String secondname, String email, int cash, int timeDrive, int token) {
+    @Override
+    protected void finalize() throws Throwable {
+        super.finalize();
+    }
+
+    private User(String username, String firstname, String secondname, String email, int cash, int timeDrive, int token) {
         this.username = username;
         this.firstname = firstname;
         this.secondname = secondname;
@@ -17,6 +23,13 @@ public class User {
         this.cash = cash;
         this.email = email;
         this.token = token;
+    }
+
+    public static User getInstance(String username, String firstname, String secondname, String email, int cash, int timeDrive, int token) {
+        if (instance == null) {
+            instance = new User(username, firstname, secondname, email, cash, timeDrive, token);
+        }
+        return instance;
     }
 
     public String getFirstname() {

@@ -89,7 +89,7 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:hint="Введите логин"
-                android:inputType="textPersonName"
+                android:inputType="textPassword"
                 android:minHeight="48dp"
                 android:paddingHorizontal="10dp" />
         </LinearLayout>
